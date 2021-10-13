@@ -48,3 +48,25 @@ def _highlight_word(word, importance, max_importance, max_opacity):
         color = f'rgba(0, 0, 255, {opacity:2f})'
     highlighted_word = f'<span style="background:{color}">{word}</span>'
     return highlighted_word
+
+
+def make_table(explanation, figsize=None):
+    words, word_indices, negative_scores, positive_scores = explanation
+
+    import matplotlib.pyplot as plt
+
+    fig = plt.figure(figsize=figsize)
+    vals = [x[1] for x in exp]
+
+    vals.reverse()
+    words.reverse()
+    colors = ['green' if x > 0 else 'red' for x in vals]
+    pos = np.arange(len(exp)) + .5
+    plt.barh(pos, vals, align='center', color=colors)
+    plt.yticks(pos, words)
+    if self.mode == "classification":
+        title = 'Local explanation for class %s' % self.class_names[label]
+    else:
+        title = 'Local explanation'
+    plt.title(title)
+    return fig
