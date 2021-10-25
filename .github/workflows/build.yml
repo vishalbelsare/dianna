@@ -26,7 +26,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Expected failure on Python 3.10
         # failure caused by onnxruntime not supporting 3.10
-        if: failure() && ${{ matrix.python-version }} == 3.10
+        if: ${{ failure() && matrix.python-version == 3.10 }}
         run: exit 0
       - name: Run unit tests
         run: pytest -v
