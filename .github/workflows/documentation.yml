@@ -8,19 +8,27 @@ on:
   pull_request:
     branches:
     - main
+    types:
+    - opened
+    - reopened
+    - synchronize
+    - ready_for_review
 
 jobs:
 
   build:
     name: Build documentation
+    if: github.event.pull_request.draft == false
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
     steps:
       - uses: actions/checkout@v3
       - uses: ./.github/actions/install-python-and-package
+        with:
+          extras-require: docs
       - name: Install pandoc using apt
-        run: sudo apt install pandoc        
+        run: sudo apt install pandoc
       - name: Build documentation
         run: make coverage doctest html
         working-directory: docs

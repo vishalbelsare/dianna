@@ -33,10 +33,8 @@ Dependencies and Package management
 DIANNA aims to support all Python 3 minor versions that are still
 actively maintained, currently:
 
--  3.7
--  3.8
--  3.9
--  3.10 is still missing pending the availibility of `onnxruntime` in 3.10.
+.. image:: https://img.shields.io/pypi/pyversions/dianna
+   :target: https://pypi.python.org/project/dianna/
 
 Add or remove Python versions based on availability of dependencies in
 all versions. See `the
@@ -73,7 +71,7 @@ Running the tests
 There are two ways to run tests.
 
 The first way requires an activated virtual environment with the
-development tools installed:
+development tools installed run the following from the root directory of this repository:
 
 .. code:: shell
 
@@ -88,36 +86,53 @@ The second is to use ``tox``, which must be installed separately (e.g. with ``pi
 Testing with ``tox`` allows for keeping the testing environment separate from your development environment.
 The development environment will typically accumulate (old) packages during development that interfere with testing; this problem is avoided by testing with ``tox``.
 
+Testing the dashboard
+~~~~~~~~~~~~~~~~~~~~~
+
+The dashboard workflow can be tested using `playwright <https://playwright.dev/python/>`__.
+
+Setup:
+
+.. code:: shell
+
+    pip install pytest-playwright
+    playwright install chromium
+
+To run the dashboard tests:
+
+.. code:: shell
+
+    pytest -v --dashboard
+
+To help with developing the dashboard tests,
+you can use the `playwright code generator <https://playwright.dev/python/docs/codegen)>`__:
+
+.. code:: shell
+
+    playwright codegen http://localhost:8501
+
+
 Running linters locally
 -----------------------
 
-For linting we use
-`prospector <https://pypi.org/project/prospector/>`__ and to sort
-imports we use `isort <https://pycqa.github.io/isort/>`__. Running
-the linters requires an activated virtual environment with the
-development tools installed.
+For linting and import sorting we use `ruff <https://github.com/charliermarsh/ruff>`__, and to autoformat
+the code we use `yapf <https://github.com/google/yapf>`__
+Running the linters requires `pre-commit <https://pre-commit.com/>`__.
 
 .. code:: shell
 
-   # linter
-   prospector
+   # staged files only
+   pre-commit
 
-   # recursively check import style for the dianna module only
-   isort --recursive --check-only dianna
+   # all files
+   pre-commit run --all-files
 
-   # recursively check import style for the dianna module only and show
-   # any proposed changes as a diff
-   isort --recursive --check-only --diff dianna
-
-   # recursively fix import style for the dianna module only
-   isort --recursive dianna
-
-You can enable automatic linting with ``prospector`` and ``isort`` on
-commit by enabling the git hook from ``.githooks/pre-commit``, like so:
+You can enable automatic linting and code formatting with ``pre-commit``
+on each commit by enabling the git hook, like so:
 
 .. code:: shell
 
-   git config --local core.hooksPath .githooks
+   pre-commit install
 
 We also check linting errors in a GitHub Actions CI workflow.
 

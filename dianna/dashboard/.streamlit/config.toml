@@ -1,0 +1,13 @@
+[theme]
+base="light"
+primaryColor="7030a0"
+# backgroundColor=
+secondaryBackgroundColor="#e4f3f9"
+# textColor=
+# font=
+
+[browser]
+gatherUsageStats = false
+
+[client]
+showSidebarNavigation = false

@@ -20,6 +20,10 @@ authors:
     given-names: Christiaan
     orcid: "https://orcid.org/0000-0002-5529-5761"
   -
+    family-names: Alidoost
+    given-names: Fakhereh (Sarah)
+    orcid: "https://orcid.org/0000-0001-8407-6472"
+  -
     family-names: Oostrum
     given-names: Leon
     orcid: "https://orcid.org/0000-0001-8724-8372"
@@ -27,10 +31,29 @@ authors:
     family-names: Crocioni
     given-names: Giulia
     orcid: "https://orcid.org/0000-0002-0823-0121"
+  -
+    family-names: Jansen
+    given-names: Aron
+    orcid: "https://orcid.org/0000-0002-4764-9347"
+  -
+    family-names: Ootes
+    given-names: Laura
+    orcid: "https://orcid.org/0000-0002-2800-8309"
+  -
+    family-names: Chandramouli
+    given-names: Pranav
+    orcid: "https://orcid.org/0000-0002-7896-2969"
+  -
+    family-names: Smeets
+    given-names: Stef
+    orcid: "https://orcid.org/0000-0002-5413-9038"
+  -
+    family-names: Spek
+    given-names: Willem
+    name-particle: "van der"
 
-# date-released: 2021-12-23
 doi: 10.5281/zenodo.5801485
-version: "0.4.1"
+version: "1.7.0"
 repository-code: "https://github.com/dianna-ai/dianna"
 keywords:
   - XAI
